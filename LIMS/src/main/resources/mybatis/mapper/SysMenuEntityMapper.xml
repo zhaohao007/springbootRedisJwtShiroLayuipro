@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hinmu.lims.dao.SysMenuMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hinmu.lims.model.entity.SysMenuEntity">
+    <result column="id" property="id" />
+    <result column="when_created" property="whenCreated" />
+    <result column="when_modified" property="whenModified" />
+    <result column="who_created" property="whoCreated" />
+    <result column="who_modified" property="whoModified" />
+        <result column="parent_id" property="parentId" />
+        <result column="name" property="name" />
+        <result column="server_url" property="serverUrl" />
+        <result column="front_url" property="frontUrl" />
+        <result column="perms" property="perms" />
+        <result column="type" property="type" />
+        <result column="icon" property="icon" />
+        <result column="inner_type" property="innerType" />
+        <result column="order_num" property="orderNum" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        when_created,
+        when_modified,
+        who_created,
+        who_modified,
+        parent_id, name, server_url,front_url, perms, type, icon, inner_type, order_num
+    </sql>
+    <select id="selectPidByid" resultType="java.lang.Integer">
+        select parent_id as parentId
+        from tb_sys_menu
+        where id=#{deptPid}
+    </select>
+
+</mapper>

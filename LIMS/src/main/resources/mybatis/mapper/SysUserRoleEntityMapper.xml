@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hinmu.lims.dao.SysUserRoleMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hinmu.lims.model.entity.SysUserRoleEntity">
+    <result column="id" property="id" />
+    <result column="when_created" property="whenCreated" />
+    <result column="when_modified" property="whenModified" />
+    <result column="who_created" property="whoCreated" />
+    <result column="who_modified" property="whoModified" />
+        <result column="user_id" property="userId" />
+        <result column="role_id" property="roleId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        when_created,
+        when_modified,
+        who_created,
+        who_modified,
+        user_id, role_id
+    </sql>
+
+    <select id="selectType" resultType="java.lang.Integer">
+        select ud.id
+        from tb_sys_admin_user u
+        LEFT JOIN  tb_user_detail_info ud on ud.account_id=u.id
+        where u.id=#{id}
+    </select>
+
+</mapper>

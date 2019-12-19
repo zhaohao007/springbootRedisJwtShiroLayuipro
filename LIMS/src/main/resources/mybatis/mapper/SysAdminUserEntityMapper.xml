@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hinmu.lims.dao.SysAdminUserMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hinmu.lims.model.entity.SysAdminUserEntity">
+    <result column="id" property="id" />
+    <result column="when_created" property="whenCreated" />
+    <result column="when_modified" property="whenModified" />
+    <result column="who_created" property="whoCreated" />
+    <result column="who_modified" property="whoModified" />
+        <result column="account" property="account" />
+        <result column="password" property="password" />
+        <result column="salt" property="salt" />
+        <result column="inner_type" property="innerType" />
+        <result column="name" property="name" />
+        <result column="status" property="status" />
+        <result column="description" property="description" />
+        <result column="login_time" property="loginTime" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        when_created,
+        when_modified,
+        who_created,
+        who_modified,
+        account, password, salt, inner_type, email, nick_name, sex, name, status, description, token, login_time
+    </sql>
+    <select id="find" resultType="com.hinmu.lims.model.reqbean.EditeSysAdminUserReqValid">
+      select
+        tau.id,
+        tau.company_id,
+        tau.sales_case_id,
+        tau.account,
+        tau.password,
+        tau.salt,
+        tau.inner_type,
+        tau.name,
+        tau.status,
+        tau.description,
+        tau.login_time,
+        tau.portrait,
+        tc.name as companyNanem,
+        ts.name as salesCaseName
+      from tb_sys_admin_user tau
+      join tb_company tc on tau.company_id=tc.id
+      join tb_sales_case ts on tau.sales_case_id=ts.id
+      where 1=1 and tau.id=#{id}
+    </select>
+    <select id="findto" resultType="com.hinmu.lims.model.entity.SysAdminUserEntity">
+      select
+        tau.id,
+        tau.company_id,
+        tau.sales_case_id,
+        tau.account,
+        tau.password,
+        tau.salt,
+        tau.inner_type,
+        tau.name,
+        tau.status,
+        tau.description,
+        tau.login_time,
+        tau.portrait
+      from tb_sys_admin_user tau
+      where 1=1 and tau.id=#{id}
+    </select>
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hinmu.lims.dao.SysRoleMapper">
+
+    <!-- 开启二级缓存 -->
+    <cache type="org.mybatis.caches.ehcache.LoggingEhcache"/>
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.hinmu.lims.model.entity.SysRoleEntity">
+    <result column="id" property="id" />
+    <result column="when_created" property="whenCreated" />
+    <result column="when_modified" property="whenModified" />
+    <result column="who_created" property="whoCreated" />
+    <result column="who_modified" property="whoModified" />
+        <result column="role_name" property="roleName" />
+        <result column="inner_type" property="innerType" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        when_created,
+        when_modified,
+        who_created,
+        who_modified,
+        role_name,inner_type, remark
+    </sql>
+</mapper>
