@@ -1,0 +1,59 @@
+<div class="layui-form" lay-filter="layuiadmin-form-menu-add" id="layuiadmin-form-menu-add"
+     style="padding: 20px 0 0 0;">
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">*</span>菜单名称</label>
+        <div class="layui-input-inline">
+            <input type="text" name="name" lay-verify="required" placeholder="请输入菜单名称" autocomplete="off"
+                   class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">前端路由</label>
+        <div class="layui-input-inline">
+            <input type="text" name="frontUrl" placeholder="前端路由" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">服务端url</label>
+        <div class="layui-input-inline">
+            <input type="text" name="serverUrl" placeholder="服务端url" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">权限授权</label>
+        <div class="layui-input-inline">
+            <input type="text" name="perms" placeholder="请输入权限" autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">*</span>菜单类型</label>
+        <div class="layui-input-inline">
+            <select id="menuTypeList" name="type" lay-verify="">
+
+            </select>
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">*</span>菜单图标</label>
+        <div class="layui-input-inline">
+            <input type="text" name="icon" lay-verify="required" placeholder="layui-icon-xxx" value="layui-icon-xxx"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"><span style="color: red;">*</span>排序</label>
+        <div class="layui-input-inline">
+            <input type="text" name="orderNum" lay-verify="required" value="1" placeholder="layui-icon-xxx"
+                   autocomplete="off" class="layui-input">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label"></label>
+        <div class="layui-input-inline">
+            <input type="button" lay-submit lay-filter="LAY-sys-menu-add-submit" id="LAY-sys-menu-add-submit"
+                   value="确认" class="layui-btn">
+        </div>
+    </div>
+</div>
+
+

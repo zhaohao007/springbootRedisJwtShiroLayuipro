@@ -1,0 +1,29 @@
+<div class="layui-form" lay-filter="layuiadmin-form-menu-add" id="layuiadmin-form-menu-add" style="padding: 20px 0 0 0;">
+    <form class="layui-form" style="padding: 20px 0 0 0;">
+                <input type="hidden" id="grantid"  name="id" value="">
+        <div class="layui-form-item">
+            <label class="layui-form-label">选择角色：</label><br>
+            <div class="layui-input-block" id="myradio">
+                <input type="radio" name="roleListId[]"  lay-filter="roleListIdFilter"  value="" title="">
+                <input type="radio" name="roleListId[]"  lay-filter="roleListIdFilter"  value="" title="">
+            </div>
+
+            <div style="margin-top: 200px;margin-left: 150px;">
+
+                <input class="layui-btn layui-btn-primary" type="button" lay-submit lay-filter="LAY-grant-back-submit"value="确认">
+                <input class="layui-btn layui-btn-primary" type="button" lay-submit lay-filter="LAY-grant-back-delet" value="取消">
+            </div>
+        </div>
+    </form>
+</div>
+<script  type="text/javascript">
+    layui.use('sysuser-list', layui.factory('sysuser-list'));
+    // layui.config({
+    //     base: '../src/controller/' //静态资源所在路径
+    // }).extend({
+    //     index: 'lib/index' //主入口模块
+    // }).use(['index','sysuser-grant','form'],function () {
+    //     var form = layui.form;
+    //     form.render('checkbox');
+    // });
+</script>

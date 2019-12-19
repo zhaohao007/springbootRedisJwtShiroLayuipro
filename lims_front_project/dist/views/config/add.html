@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "${base}/common/head.html">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">添加配置信息</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keyName" lay-verify="required" autocomplete="off" placeholder="请输入名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">值</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="keyValue"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">描述信息</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="desrc"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序值</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ordernum"  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" id="addBtnView" lay-filter="addBtn">立即提交</button>
+                            <a href="/admin/sys/config/toListView" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="${base}/static/js/sys-config/add.js?v1=1.0"></script>
+</html>

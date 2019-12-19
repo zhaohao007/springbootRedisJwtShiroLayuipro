@@ -1,0 +1,120 @@
+<title>账户管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统管理</cite></a>
+        <a><cite>账户管理</cite></a>
+    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">登录账户</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="account" name="account" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <select id="innerType" name="innerType" lay-filter="innerType-select-filter">
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <select id="status" name="status" lay-filter="status-select-filter">
+                    </select>
+                </div>
+            <div class="layui-inline">
+                <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-user-back-search-filter">
+                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="layui-card-body">
+        <table id="LAY-sys-user-list-table" lay-filter="LAY-sys-user-list-table-filter"></table>
+    </div>
+</div>
+</div>
+<script type="text/html" id="table-user-list-toolbar">
+    {{# if(hasPermission('admin:sys:user:delete:batch')){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs"  lay-event="batchdel"><i class="layui-icon layui-icon-delete"></i>批量删除</a>
+    {{#  } }}
+    {{# if(hasPermission('admin:sys:user:add')){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs"  lay-event="add"><i class="layui-icon layui-icon-edit"></i>添加账户</a>
+    {{#  } }}
+</script>
+<script type="text/html" id="table-sys-user-tpl">
+    {{# if(hasPermission('admin:sys:user:grant')){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="grant" id="grant"><i class="layui-icon layui-icon-edit"></i>赋权</a>
+    {{#  } }}
+    {{# if(hasPermission('admin:sys:user:edite')){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit" id="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+    {{#  } }}
+    {{# if(hasPermission('admin:sys:user:delete')){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" id="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+    {{#  } }}
+</script>
+<script>
+    layui.use('sysuser-list', layui.factory('sysuser-list'));
+</script>
+<!--<script>-->
+    <!--layui.config({-->
+        <!--base: '../src/controller/modules/'-->
+
+    <!--}).use(['index', 'sysuser', 'table'], function(){-->
+        <!--var $ = layui.$-->
+            <!--,form = layui.form-->
+            <!--,table = layui.table;-->
+        <!--form.on('submit(LAY-user-back-search-filter)', function(data){-->
+           <!--// 执行重载-->
+            <!--table.reload('LAY-sys-user-list-table', {-->
+                <!--where:{-->
+                    <!--account:$("#account").val(),-->
+                    <!--status:$("#status").val(),-->
+                    <!--innerType:$("#innerType").val()-->
+                <!--},-->
+                <!--text: {none: '无数据'}-->
+            <!--});-->
+        <!--});-->
+
+
+
+        <!--//事件-->
+        <!--var active = {-->
+            <!--batchdel: function(){-->
+                <!--var checkStatus = table.checkStatus('LAY-sys-user-list-table')-->
+                    <!--,checkData = checkStatus.data; //得到选中的数据-->
+
+                <!--if(checkData.length === 0){-->
+                    <!--return layer.msg('请选择数据');-->
+                <!--}-->
+                <!--var idList = [];-->
+                <!--checkData.forEach(function(element, index) {-->
+                    <!--idList.push(element.id)-->
+                <!--})-->
+
+                <!--layer.confirm('确定删除吗？', function(index) {-->
+                    <!--var param = {idList:idList};-->
+                    <!--$postAjaxWithJson("admin/sysuser/delete/batch",param,function (data) {-->
+                        <!--layer.msg('已删除');-->
+                        <!--//执行重载-->
+                        <!--table.reload('LAY-sys-user-list-table', {-->
+                            <!--where:{-->
+                                <!--account:$("#account").val(),-->
+                                <!--status:$("#status").val(),-->
+                                <!--innerType:$("#innerType").val()-->
+                            <!--}-->
+                        <!--});-->
+                    <!--})-->
+
+                <!--});-->
+            <!--}-->
+        <!--}-->
+        <!--$('.layui-btn.layuiadmin-btn-role').on('click', function(){-->
+            <!--var type = $(this).data('type');-->
+            <!--active[type] ? active[type].call(this) : '';-->
+        <!--});-->
+    <!--});-->
+<!--</script>-->

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "${base}/common/head.html">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">系统配置</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div class="layui-form-item">
+                    <input type="hidden" name="id" value="${info.id!}"/>
+                    <label class="layui-form-label">配置名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="name" value="${info.keyName!}" lay-verify="required" autocomplete="off" placeholder="请输入名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">配置值</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="remark" value="${info.keyValue!}"  lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">描述信息</label>
+                    <div class="layui-input-block">
+                        <textarea  type="text" name="desrc" value="${info.desrc!}" placeholder="请输入" autocomplete="off" class="layui-textarea">
+                        </textarea>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">排序号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="ordernum" value="${info.ordernum!}" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+
+
+
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" id="editBtnView" lay-filter="editBtn">立即提交</button>
+                            <a href="/admin/sys/config/toListView" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="${base}/static/js/sys-config/edit.js?v1=1.0"></script>
+</html>
