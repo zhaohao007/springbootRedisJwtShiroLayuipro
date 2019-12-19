@@ -1,0 +1,54 @@
+<title>菜单管理</title>
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统管理</cite></a>
+        <a><cite>菜单管理</cite></a>
+    </div>
+</div>
+<div class="layui-fluid layadmin-homepage-fluid">
+    <div class="layui-row layui-col-space10">
+        <div class="layui-btn-container">
+            <button class="layui-btn layui-btn-sm open-all">全部展开</button>
+            <button class="layui-btn layui-btn-sm close-all">全部关闭</button>
+            <!--<@shiro.hasPermission name="admin:sys:menu:toAdd">-->
+            <button class="layui-btn layui-btn-sm top-menu-all">添加顶层菜单</button>
+            <!--</@shiro.hasPermission>-->
+        </div>
+        <table class="layui-table layui-form" id="menu-tree-table" lay-size="sm"></table>
+    </div>
+</div>
+
+<script type="text/html" id="toolbarTemplet">
+    {{# if(d.type == 'TOP_MENU'){ }}
+        {{# if(hasPermission('admin:sys:menu:add')){ }}
+        <a class="layui-btn layui-btn-xs" lay-filter="add">添加下级菜单</a>
+        {{#  } }}
+        {{# if(hasPermission('admin:sys:menu:edite')){ }}
+        <a class="layui-btn layui-btn-xs" lay-filter="edite">编辑</a>
+        {{#  } }}
+        {{# if(hasPermission('admin:sys:menu:delete')){ }}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-filter="delete">删除</a>
+        {{#  } }}
+    {{# }else if(d.type == 'SECOND_MENU'){  }}
+        {{# if(hasPermission('admin:sys:menu:add')){ }}
+        <a class="layui-btn layui-btn-xs" lay-filter="add">添加下级菜单</a>
+        {{#  } }}
+        {{# if(hasPermission('admin:sys:menu:edite')){ }}
+        <a class="layui-btn layui-btn-xs" lay-filter="edite">编辑</a>
+        {{#  } }}
+        {{# if(hasPermission('admin:sys:menu:delete')){ }}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-filter="delete">删除</a>
+        {{#  } }}
+    {{# } else if(d.type == 'BUTTON'){  }}
+        {{# if(hasPermission('admin:sys:menu:edite')){ }}
+        <a class="layui-btn layui-btn-xs" lay-filter="edite">编辑</a>
+        {{#  } }}
+        {{# if(hasPermission('admin:sys:menu:delete')){ }}
+        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-filter="delete">删除</a>
+        {{#  } }}
+    {{# }  }}
+</script>
+<script>
+    layui.use('sysmenu-list', layui.factory('sysmenu-list'));
+</script>

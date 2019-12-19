@@ -1,0 +1,60 @@
+<title>角色管理</title>
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统管理</cite></a>
+        <a><cite>角色管理</cite></a>
+    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+            <div class="layui-form-item">
+                <div class="layui-inline">
+                    <label class="layui-form-label">角色名字</label>
+                    <div class="layui-input-block">
+                        <input type="text" id="roleName" name="roleName" placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <select id="innerType" name="innerType" lay-filter="LAY-sys-role-innerType-select-filter">
+                        <option name="innerType" value="">全部</option>
+                             <option value="INNER">内置超级管理员角色</option>
+                             <option value="NORMAL">普通管理员</option>
+                    </select>
+                </div>
+            <div class="layui-inline">
+                <button class="layui-btn layuiadmin-btn-admin" lay-submit lay-filter="LAY-sys-role-list-search-filter">
+                    <i class="layui-icon layui-icon-search layuiadmin-button-btn"></i>
+                </button>
+            </div>
+            </div>
+        </div>
+        <div class="layui-card-body">
+
+            <table id="LAY-sys-role-list-table" lay-filter="LAY-sys-role-list-table-filter"></table>
+
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="table-role-list-toolbar">
+    {{# if(hasPermission('admin:sys:role:edite')){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs"  lay-event="batchdel"><i class="layui-icon layui-icon-delete"></i>批量删除</a>
+    {{#  } }}
+    {{# if(hasPermission('admin:sys:role:delete')){ }}
+    <a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="add"><i class="layui-icon layui-icon-edit"></i>添加角色</a>
+    {{#  } }}
+</script>
+
+<script type="text/html" id="table-role-tpl">
+{{# if(hasPermission('admin:sys:role:edite')){ }}
+<a class="layui-btn layui-btn-normal layui-btn-xs" lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</a>
+{{#  } }}
+{{# if(hasPermission('admin:sys:role:delete')){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"><i class="layui-icon layui-icon-delete"></i>删除</a>
+{{#  } }}
+</script>
+<script>
+    layui.use('role-list', layui.factory('role-list'));
+</script>

@@ -1,0 +1,46 @@
+<title>新增角色</title>
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a lay-href="/role/list"><cite>角色管理</cite></a>
+        <a><cite>新增角色</cite></a>
+    </div>
+</div>
+<div class="layui-fluid" style="padding: 20px 0 0 0;">
+    <div class="layui-card">
+        <form class="layui-form" style="padding: 20px 0 0 0;width: 50%">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red;">*</span>角色名称</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" lay-verify="roleName" AUTOCOMPLETE="off" id="roleName"  name="roleName" placeholder="请输入角色名称"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red;">*</span>角色描述</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text"lay-verify="remark" AUTOCOMPLETE="off" name="remark" placeholder="请输入角色描述"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">选择权限</label>
+                <div class="layui-input-block">
+
+                    <div id="LAY-auth-tree-index"></div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="submit" lay-submit lay-filter="LAY-auth-tree-submit">提交</button>
+                    <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                    <button type="button" class="layui-btn"  id="treecheckAll">全选</button>
+                    <button type="button" class="layui-btn"  id="treeuncheckAll">全不选</button>
+                </div>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+
+<script>
+    layui.use('role-add', layui.factory('role-add'));
+</script>

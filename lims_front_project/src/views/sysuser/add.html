@@ -1,0 +1,127 @@
+<title>账户管理</title>
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统管理</cite></a>
+        <a lay-href="/sysuser/list"><cite>账户管理</cite></a>
+        <a lay-href="/sysuser/add"><cite>新增账户</cite></a>
+    </div>
+</div>
+<div class="layui-fluid" style="padding: 20px 0 0 0;">
+    <div class="layui-card">
+        <form class="layui-form" style="padding: 20px 0 0 0; width: 50%">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red;">*</span>登录账户</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" AUTOCOMPLETE="off"  maxlength="100" lay-verify="required" name="account" placeholder="请输入登录账户"/>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red;">*</span>登录密码</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="password" AUTOCOMPLETE="off"  maxlength="500" lay-verify="password" id="mytext" name="password"
+                           placeholder="8-16位，由字母（区分大小写）、数字组成" maxlength="16"/>
+                    <br/>
+                    <div>
+                        密码强度：
+                        <span class="spans" style="color: #f5f5f5">弱</span>
+                    </div>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">姓名</label>
+                <div class="layui-input-block">
+                    <input class="layui-input" type="text" name="name" placeholder="姓名"/>
+                </div>
+            </div>
+                <div class="layui-form-item" id="mystaus">
+                    <label class="layui-form-label"><span style="color: red;" >*</span>选择状态</label>
+                    <div class="layui-input-block" >
+                        <input type="radio"  name="status"  value="USABLE" title="可用" checked>
+                        <input type="radio"  name="status"  value="DISABLE" title="不可用" >
+                </div>
+                </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">合作商</label>
+                <div class="layui-input-block">
+                    <select name="companyId" id="companyId"  lay-verify="companyId" lay-search="" lay-filter="company-select-filter">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">案场</label>
+                <div class="layui-input-block">
+                    <select name="salesCaseId" id="caseId"  lay-filter="case-select-filter">
+                    </select>
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">头像图片</label>
+                <div class="layui-input-block">
+                    <button type="button" class="layui-btn layui-btn-primary" id="test-upload-type2"><i class="layui-icon"></i>只允许上传PNG,JPG,JPEG 图片</button>
+                </div>
+                <div class="" style="height: 150px; width:150px;margin-left: 100px">
+                    <ul id="imgZmList"></ul>
+                    <input type="hidden" id="portrait" name="portrait">
+                </div>
+            </div>
+
+                    <div class="layui-form-item">
+                    <label class="layui-form-label">描述</label>
+                        <div class="layui-input-block">
+                        <input class="layui-input" type="text" lay-verify="description" AUTOCOMPLETE="off"  name="description" placeholder="描述"/>
+                        </div>
+                    </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="submit" lay-submit lay-filter="LAY-sys-user-add-submit">提交</button>
+                    <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                </div>
+            </div>
+        </form>
+        <br>
+    </div>
+</div>
+<div id="cropperdiv"></div>
+<script>
+
+    layui.link(layui.setter.base+"style/imageupload/publish.css");
+    layui.use('sysuser-add', layui.factory('sysuser-add'));
+
+
+    //图片删除
+    function deleteElement(Obj) {
+        Obj.parentNode.parentNode.removeChild(Obj.parentNode);
+        document.getElementById('portrait').value = null;
+        document.getElementById('imgZmList').innerHTML =('');
+    }
+    function croppers_pic(obj) {
+        console.log("aaa");
+        var src = document.getElementById('oldView').src;
+        layui.define(["croppers",'layer'], function () {
+            var setter = layui.setter;
+            var croppers = layui.croppers;
+            var layer = layui.layer,$=layui.$;
+            croppers.render({
+                area: ['900px', '600px']  //弹窗宽度
+                , imgUrl: src
+                , shade:false
+                , maxmin:true
+                , zIndex: layer.zIndex
+                , url: setter.baseUrl+'/api/admin/upload/mediafile'  //图片上传接口返回和（layui 的upload 模块）返回的JOSN一样
+                , success: function (layero) {
+                    layer.setTop(layero);
+                }
+                , done: function (res) { //上传完毕回调
+                    //更改图片src
+                    document.getElementById('oldView').src = res;
+                    //上传完毕
+                    document.getElementById('portrait').value = res;
+                }
+            });
+
+        });
+    }
+
+</script>

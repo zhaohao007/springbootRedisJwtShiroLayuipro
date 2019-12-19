@@ -1,0 +1,56 @@
+<title>系统日志</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">首页</a>
+        <a><cite>系统设置</cite></a>
+        <a><cite>系统日志</cite></a>
+    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+                <div class="layui-card-header">日志信息</div>
+                <div class="test-table-reload-btn" style="margin-bottom: 10px;">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;操作用户名：
+                    <div class="layui-inline">
+                        <input class="layui-input" name="userNames" id="userName" autocomplete="off">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日志操作日期
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="whenCreated" placeholder=" - " autocomplete="off" >
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IP地址：
+                    <div class="layui-inline">
+                        <input class="layui-input" name="ip" id="ip" autocomplete="off">
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;日志级别：
+                    <div class="layui-input-inline" style="width: 100px">
+                        <select class="layui-inline" style="width: 100px" name="type" lay-search=""
+                                id="type" lay-verify="required" class="layui-input">
+                            <option value=""></option>
+                            <option value="debug">DEBUG </option>
+                            <option value="info">INFO </option>
+                            <option value="warn">WARN </option>
+                            <option value="error">ERROR </option>
+                            <option value="fatal">FATAL </option>
+                        </select>
+                    </div>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <button class="layui-btn" data-type="reload">搜索</button>
+                </div>
+                </div>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test-table-page" lay-filter="floor-table"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    layui.use('syslog-list', layui.factory('syslog-list'));
+</script>

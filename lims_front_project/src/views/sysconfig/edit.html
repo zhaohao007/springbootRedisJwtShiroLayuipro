@@ -1,0 +1,48 @@
+<title>参数配置列表</title>
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统设置</cite></a>
+        <a><cite>编辑参数配置</cite></a>
+    </div>
+</div>
+<div class="layui-fluid" style="padding: 20px 0 0 0;">
+    <div class="layui-card">
+        <form class="layui-form" style="padding: 20px 0 0 0; width: 50%">
+            <input type="hidden" id="id"  name="id">
+            <div class="layui-form-item">
+                <label class="layui-form-label"><span style="color: red;">*</span>key值</label>
+                <div class="layui-input-block" >
+                    <input type="text" name="keyName" id="keyName" lay-verify="required" readonly class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label "><span style="color: red;">*</span>value值</label>
+                <div class="layui-input-block" >
+                    <input type="text" name="keyValue" id="keyValue" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label "><span style="color: red;">*</span>描述信息</label>
+                <div class="layui-input-block" >
+                    <input type="text" name="desrc" id="desrc" lay-verify="required" readonly class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label "><span style="color: red;">*</span>排序号</label>
+                <div class="layui-input-block" >
+                    <input type="text" name="ordernum" id="ordernum" lay-verify="required" readonly class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" type="submit" lay-submit lay-filter="LAY-config-edit-submit">提交</button>
+                    <button class="layui-btn layui-btn-primary" type="reset">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    layui.use('sysconfig-edit', layui.factory('sysconfig-edit'));
+</script>

@@ -1,0 +1,76 @@
+<title>参数管理</title>
+
+<div class="layui-card layadmin-header">
+    <div class="layui-breadcrumb" lay-filter="breadcrumb">
+        <a lay-href="">主页</a>
+        <a><cite>系统管理</cite></a>
+        <a><cite>参数管理</cite></a>
+    </div>
+</div>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">添加配置信息</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%"><span style="color: red;">*</span>法院代码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="COURT_CODE" value="${info.COURT_CODE!}" lay-verify="required" autocomplete="off" placeholder="请输入名称" class="layui-input" style="width: 90%">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%"><span style="color: red;">*</span>法院名称</label>
+                    <div class="layui-input-block">
+                        <!--<input type="text" name="COURT_NAME"  value="${info.COURT_NAME!}" placeholder="请输入" autocomplete="off" class="layui-input" style="width: 90%">-->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%">短信模板</label>
+                    <p><font style="color: red;">替换符 {}  比如: 验证码:{code}   实际内容  验证码:66598 支持词条{【XXXX法院】},{取件人},{存件人},{超时时间},{取件码},{快递柜位置}</font></p>
+                    <div class="layui-input-block" >
+                        <!--<textarea class="layui-textarea" name="SMS_TEMPLATE" style="width: 90%">${info.SMS_TEMPLATE!} </textarea>-->
+                    </div>
+                </div>
+                <div class="layui-form-item" >
+                    <label class="layui-form-label" style="width: 10%">微信模板</label>
+                    <p><font style="color: red;">替换符 {}  比如: 验证码:{code}   发送实际短信为  验证码:66598</font></p>
+                    <div class="layui-input-block">
+                        <!--<textarea class="layui-textarea" name="WECHAT_TEMPLATE"  placeholder="请输入" style="width: 90%">${info.WECHAT_TEMPLATE!} </textarea>-->
+
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%"><span style="color: red;">*</span>最大联系人</label>
+                    <div class="layui-input-block">
+                        <!--<input type="text" name="MAX_CONTACT" value="${info.MAX_CONTACT!}"  lay-verify="required|number" autocomplete="off" class="layui-input" style="width: 90%">-->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%"><span style="color: red;">*</span>案件超时时间</label>
+                    <div class="layui-input-block">
+                        <!--<input type="text" name="CASE_TIMEOUT"  placeholder="单位小时" value="${info.CASE_TIMEOUT!}"  lay-verify="required|number"  autocomplete="off" class="layui-input" style="width: 90%">-->
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="width: 10%"><span style="color: red;">*</span>快递超时时间</label>
+                    <div class="layui-input-block">
+                        <!--<input type="text" name="EXPRESS_TIMEOUT" placeholder="单位小时" value="${info.EXPRESS_TIMEOUT!}" lay-verify="required|number" autocomplete="off" class="layui-input" style="width: 90%">-->
+                    </div>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" id="editBtnView" lay-filter="editBtn">立即提交</button>
+                            <a href="/admin/sys/config/toConfigView" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    layui.use('sysconfig-list', layui.factory('sysconfig-list'));
+</script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <#include "${base}/common/head.html">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">添加楼层</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" action="" lay-filter="component-form-group">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">所属楼栋</label>
+                    <div class="layui-input-block">
+                        <select name="buildId" lay-verify="required">
+                          <option value='${info.buildId}'>${info.parentName}</option>
+                            <#list list as item>
+                            <option value='${item["id"]}'>${item["name"]}</option>-->
+                           </#list>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">楼层名称</label>
+                    <div class="layui-input-block">
+                        <input type="hidden" name="id" value="${info.id}">
+                        <input type="text" name="name" value='${info.name}' lay-verify="required" autocomplete="off" placeholder="请输入名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">楼层序号</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="floorNum" value='${info.floorNum}' lay-verify="required|number" autocomplete="off" placeholder="请输入名称" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">备注</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="remark" value='${info.remark}'  placeholder="请输入" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn" lay-submit="" id="editBtnView" lay-filter="editBtn">立即提交</button>
+                            <a href="/admin/build-floor/toList" class="layui-btn layui-btn-primary">返回</a>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="${base}/static/js/floor/edit.js?v1=1.0"></script>
+</html>
