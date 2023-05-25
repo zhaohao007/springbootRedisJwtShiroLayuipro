@@ -8,7 +8,6 @@
     <packaging>war</packaging>
     <name>springbootRedisJwtShiroLayuipro</name>
     <description>springboot+Redis+Jwt+Shiro+Layuipro后端代码</description>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
