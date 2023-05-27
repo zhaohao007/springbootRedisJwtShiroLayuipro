@@ -140,6 +140,6 @@ layui.define(['laytpl', 'layer', 'element', 'util'], function(exports){
       //如果本地已经有主题色记录，则以本地记录为优先，除非请求本地数据（localStorage）
       ,initColorIndex: 0
     }
-    ,baseUrl:'http://192.168.5.21:8080'
+    ,baseUrl:'http://192.168.5.21:8080' //填写接口路径配置
   });
 });
